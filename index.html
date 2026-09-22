@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="小调网电影下载 - 提供最新高清电影资源、蓝光电影下载、4K影视资源整理及影视资讯。专注正版影视资源分享与下载指南，安全便捷的影视获取平台。">
+    <meta name="keywords" content="小调网电影下载,电影下载,蓝光电影,4K电影,影视资源,高清电影">
+    <title>小调网电影下载-高清影视资源与蓝光下载指南</title>
+    <style>
+        :root {
+            --primary-color: #e50914; /* 影视类常用红色 */
+            --primary-hover: #b20710;
+            --bg-dark: #141414;
+            --bg-card: #1f1f1f;
+            --text-main: #ffffff;
+            --text-secondary: #b3b3b3;
+            --border-color: #333;
+            --spacing-unit: 1rem;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* 布局容器 */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        /* 顶部导航 */
+        header {
+            background-color: rgba(0, 0, 0, 0.95);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary-color);
+        }
+
+        .search-box {
+            display: flex;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .search-box input {
+            background: transparent;
+            border: none;
+            color: var(--text-main);
+            padding: 0.5rem 1rem;
+            width: 200px;
+            outline: none;
+        }
+
+        .search-box button {
+            background: var(--primary-color);
+            border: none;
+            color: white;
+            padding: 0 1rem;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* Hero 区域 */
+        .hero {
+            position: relative;
+            height: 400px;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), var(--bg-dark)), url('https://picsum.photos/seed/cinema/1600/900') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.6rem 1.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--text-main);
+            color: var(--text-main);
+            margin-left: 1rem;
+        }
+
+        .btn-outline:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        /* 分类标签 */
+        .category-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            overflow-x: auto;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .tab-item {
+            padding: 0.5rem 1rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            white-space: nowrap;
+            border-bottom: 2px solid transparent;
+        }
+
+        .tab-item.active {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+        }
+
+        .tab-item:hover {
+            color: var(--text-main);
+        }
+
+        /* 内容网格 */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .movie-card {
+            background-color: var(--bg-card);
+            border-radius: 6px;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+
+        .movie-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+
+        .poster-wrapper {
+            position: relative;
+            padding-top: 150%; /* 2:3 Aspect Ratio */
+            background-color: #000;
+        }
+
+        .poster-wrapper img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .quality-badge {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background-color: var(--primary-color);
+            color: white;
+            font-size: 0.75rem;
+            padding: 2px 6px;
+            border-radius: 2px;
+            font-weight: bold;
+        }
+
+        .card-info {
+            padding: 1rem;
+        }
+
+        .card-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .download-btn {
+            display: block;
+            width: 100%;
+            text-align: center;
+            background-color: rgba(255,255,255,0.1);
+            color: var(--text-main);
+            padding: 0.4rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .download-btn:hover {
+            background-color: var(--primary-color);
+        }
+
+        /* 侧边栏 */
+        .layout-split {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .layout-split {
+                grid-template-columns: 1fr;
+            }
+            .nav-menu {
+                display: none; /* 移动端简化 */
+            }
+            .search-box {
+                display: none;
+            }
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            padding-left: 0.5rem;
+            border-left: 4px solid var(--primary-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .section-title a {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .section-title a:hover {
+            color: var(--primary-color);
+        }
+
+        .list-item {
+            display: flex;
+            gap: 1rem;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .list-item:last-child {
+            border-bottom: none;
+        }
+
+        .list-thumb {
+            width: 80px;
+            height: 110px;
+            object-fit: cover;
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+
+        .list-content h3 {
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .list-content p {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #333;
+            color: #ccc;
+            font-size: 0.7rem;
+            padding: 1px 4px;
+            border-radius: 2px;
+            margin-right: 4px;
+        }
+
+        /* 底部 */
+        footer {
+            background-color: #000;
+            border-top: 1px solid var(--border-color);
+            padding: 3rem 0;
+            margin-top: 3rem;
+            color: var(--text-secondary);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-col h4 {
+            color: var(--text-main);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #222;
+            font-size: 0.9rem;
+        }
+
+        /* 模态框样式 */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background-color: var(--bg-card);
+            padding: 2rem;
+            border-radius: 8px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-secondary);
+        }
+
+        .modal-form-group {
+            margin-bottom: 1rem;
+        }
+
+        .modal-form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-form-group input {
+            width: 100%;
+            padding: 0.8rem;
+            background: #000;
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            border-radius: 4px;
+        }
+
+        .modal-links {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .link-btn {
+            display: block;
+            text-align: center;
+            padding: 0.8rem;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .link-btn.primary {
+            background-color: var(--primary-color);
+        }
+        
+        .link-btn.secondary {
+            background-color: #333;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line><line x1="2" y1="7" x2="7" y2="7"></line><line x1="2" y1="17" x2="7" y2="17"></line><line x1="17" y1="17" x2="22" y2="17"></line><line x1="17" y1="7" x2="22" y2="7"></line></svg>
+                小调网
+            </a>
+            <nav class="nav-menu">
+                <a href="#">首页</a>
+                <a href="#">最新电影</a>
+                <a href="#">经典老片</a>
+                <a href="#">4K专区</a>
+                <a href="#">蓝光下载</a>
+                <a href="#">影视资讯</a>
+            </nav>
+            <div class="search-box">
+                <input type="text" placeholder="搜索电影、年份、导演...">
+                <button>搜索</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>探索无限光影世界</h1>
+                <p>小调网致力于为影迷提供最全、最新、最高清的电影下载资源。涵盖好莱坞大片、国产佳作及独立电影，满足你对视觉盛宴的所有想象。</p>
+                <div>
+                    <a href="#" class="btn btn-primary">立即浏览</a>
+                    <a href="#" class="btn btn-outline">热门榜单</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories -->
+        <div class="category-tabs">
+            <div class="tab-item active">全部</div>
+            <div class="tab-item">动作</div>
+            <div class="tab-item">科幻</div>
+            <div class="tab-item">剧情</div>
+            <div class="tab-item">喜剧</div>
+            <div class="tab-item">恐怖</div>
+            <div class="tab-item">动画</div>
+            <div class="tab-item">纪录片</div>
+        </div>
+
+        <!-- Latest Movies Grid -->
+        <section class="section-title">
+            <span>最新上映</span>
+            <a href="#">查看更多 &raquo;</a>
+        </section>
+
+        <div class="content-grid">
+            <!-- Movie Card 1 -->
+            <article class="movie-card">
+                <div class="poster-wrapper">
+                    <img src="https://picsum.photos/seed/movie1/300/450" alt="星际穿越">
+                    <span class="quality-badge">4K HDR</span>
+                </div>
+                <div class="card-info">
+                    <h3 class="card-title">星际穿越：重制版</h3>
+                    <div class="card-meta">
+                        <span>2014</span>
+                        <span>2h 49m</span>
+                    </div>
+                    <div class="card-meta">
+                        <span>科幻 / 冒险</span>
+                    </div>
+                    <a href="#" class="download-btn" onclick="openModal('星际穿越：重制版')">下载资源</a>
+                </div>
+            </article>
+
+            <!-- Movie Card 2 -->
+            <article class="movie-card">
+                <div class="poster-wrapper">
+                    <img src="https://picsum.photos/seed/movie2/300/450" alt="赛博朋克：边缘行者">
+                    <span class="quality-badge">1080P</span>
+                </div>
+                <div class="card-info">
+                    <h3 class="card-title">赛博朋克：边缘行者</h3>
+                    <div class="card-meta">
+                        <span>2022</span>
+                        <span>1h 25m</span>
+                    </div>
+                    <div class="card-meta">
+                        <span>动画 / 动作</span>
+                    </div>
+                    <a href="#" class="download-btn" onclick="openModal('赛博朋克：边缘行者')">下载资源</a>
+                </div>
+            </article>
+
+            <!-- Movie Card 3 -->
+            <article class="movie-card">
+                <div class="poster-wrapper">
+                    <img src="https://picsum.photos/seed/movie3/300/450" alt="奥本海默">
+                    <span class="quality-badge">蓝光</span>
+                </div>
+                <div class="card-info">
+                    <h3 class="card-title">奥本海默</h3>
+                    <div class="card-meta">
+                        <span>2023</span>
+                        <span>3h 00m</span>
+                    </div>
+                    <div class="card-meta">
+                        <span>传记 / 历史</span>
+                    </div>
+                    <a href="#" class="download-btn" onclick="openModal('奥本海默')">下载资源</a>
+                </div>
+            </article>
+
+            <!-- Movie Card 4 -->
+            <article class="movie-card">
+                <div class="poster-wrapper">
+                    <img src="https://picsum.photos/seed/movie4/300/450" alt="沙丘2">
+                    <span class="quality-badge">4K</span>
+                </div>
+                <div class="card-info">
+                    <h3 class="card-title">沙丘2</h3>
+                    <div class="card-meta">
+                        <span>2024</span>
+                        <span>2h 46m</span>
+                    </div>
+                    <div class="card-meta">
+                        <span>科幻 / 史诗</span>
+                    </div>
+                    <a href="#" class="download-btn" onclick="openModal('沙丘2')">下载资源</a>
+                </div>
+            </article>
+
+            <!-- Movie Card 5 -->
+            <article class="movie-card">
+                <div class="poster-wrapper">
+                    <img src="https://picsum.photos/seed/movie5/300/450" alt="芭比">
+                    <span class="quality-badge">1080P</span>
+                </div>
+                <div class="card-info">
+                    <h3 class="card-title">芭比</h3>
+                    <div class="card-meta">
+                        <span>2023</span>
+                        <span>1h 54m</span>
+                    </div>
+                    <div class="card-meta">
+                        <span>喜剧 / 奇幻</span>
+                    </div>
+                    <a href="#" class="download-btn" onclick="openModal('芭比')">下载资源</a>
+                </div>
+            </article>
+
+            <!-- Movie Card 6 -->
+            <article class="movie-card">
+                <div class="poster-wrapper">
+                    <img src="https://picsum.photos/seed/movie6/300/450" alt="封神第一部">
+                    <span class="quality-badge">蓝光</span>
+                </div>
+                <div class="card-info">
+                    <h3 class="card-title">封神第一部</h3>
+                    <div class="card-meta">
+                        <span>2023</span>
+                        <span>2h 24m</span>
+                    </div>
+                    <div class="card-meta">
+                        <span>奇幻 / 动作</span>
+                    </div>
+                    <a href="#" class="download-btn" onclick="openModal('封神第一部')">下载资源</a>
+                </div>
+            </article>
+        </div>
+
+        <!-- Split Layout: Content & Sidebar -->
+        <div class="layout-split">
+            <!-- Left: Hot List -->
+            <div class="main-column">
+                <section class="section-title">
+                    <span>本周热门下载</span>
+                    <a href="#">更多 &raquo;</a>
+                </section>
+                <div class="movie-list">
+                    <div class="list-item">
+                        <img src="https://picsum.photos/seed/hot1/160/220" alt="热门电影" class="list-thumb">
+                        <div class="list-content">
+                            <h3><a href="#">阿凡达：水之道</a></h3>
+                            <p>类型：科幻 / 冒险 <span class="tag">3D</span> <span class="tag">IMAX</span></p>
+                            <p>下载量：12.5万 | 大小：85GB | 格式：MKV</p>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <img src="https://picsum.photos/seed/hot2/160/220" alt="热门电影" class="list-thumb">
+                        <div class="list-content">
+                            <h3><a href="#">蜘蛛侠：纵横宇宙</a></h3>
+                            <p>类型：动画 / 动作 <span class="tag">2D</span> <span class="tag">高清</span></p>
+                            <p>下载量：10.2万 | 大小：45GB | 格式：MKV</p>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <img src="https://picsum.photos/seed/hot3/160/220" alt="热门电影" class="list-thumb">
+                        <div class="list-content">
+                            <h3><a href="#">瞬息全宇宙</a></h3>
+                            <p>类型：喜剧 / 奇幻 <span class="tag">杜比</span></p>
+                            <p>下载量：8.9万 | 大小：32GB | 格式：MKV</p>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <img src="https://picsum.photos/seed/hot4/160/220" alt="热门电影" class="list-thumb">
+                        <div class="list-content">
+                            <h3><a href="#">银翼杀手2049</a></h3>
+                            <p>类型：科幻 / 剧情 <span class="tag">4K</span></p>
+                            <p>下载量：7.5万 | 大小：50GB | 格式：MKV</p>
+                        </div>
+                    </div>
+                    <div class="list-item">
+                        <img src="https://picsum.photos/seed/hot5/160/220" alt="热门电影" class="list-thumb">
+                        <div class="list-content">
+                            <h3><a href="#">教父</a></h3>
+                            <p>类型：犯罪 / 剧情 <span class="tag">修复版</span></p>
+                            <p>下载量：6.8万 | 大小：28GB | 格式：MKV</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Sidebar -->
+            <aside class="sidebar">
+                <!-- Resource Guide -->
+                <div class="sidebar-box" style="background: var(--bg-card); padding: 1.5rem; border-radius: 6px; margin-bottom: 2rem;">
+                    <h3 style="margin-bottom: 1rem; font-size: 1.1rem;">下载指南</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem;">为了获得最佳观影体验，请确保您的播放器支持相应的编码格式。</p>
+                    <ul style="font-size: 0.9rem;">
+                        <li style="margin-bottom: 0.5rem;">• <strong>MKV:</strong> 通用性最强，支持多音轨。</li>
+                        <li style="margin-bottom: 0.5rem;">• <strong>MP4:</strong> 兼容性好，适合手机和电视。</li>
+                        <li style="margin-bottom: 0.5rem;">• <strong>蓝光原盘:</strong> 追求无损画质的首选。</li>
+                    </ul>
+                </div>
+
+                <!-- Notice Board -->
+                <div class="sidebar-box" style="background: var(--bg-card); padding: 1.5rem; border-radius: 6px;">
+                    <h3 style="margin-bottom: 1rem; font-size: 1.1rem;">网站公告</h3>
+                    <ul style="font-size: 0.9rem; color: var(--text-secondary);">
+                        <li style="margin-bottom: 0.8rem;">• <a href="#">[更新] 2024年奥斯卡获奖影片整理完毕</a></li>
+                        <li style="margin-bottom: 0.8rem;">• <a href="#">[维护] 服务器将于本周日凌晨进行例行维护</a></li>
+                        <li style="margin-bottom: 0.8rem;">• <a href="#">[求助] 如何在NAS上搭建家庭影院系统？</a></li>
+                        <li style="margin-bottom: 0.8rem;">• <a href="#">[推荐] 几款优秀的开源播放器推荐</a></li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>关于小调网</h4>
+                    <p style="font-size: 0.9rem; line-height: 1.6;">
+                        小调网是一个专注于高清电影资源分享的社区。我们致力于整理最新的蓝光、4K电影资源，为影迷提供便捷的下载服务。所有资源均来自互联网公开渠道，仅供个人学习交流使用。
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>快速导航</h4>
+                    <ul>
+                        <li><a href="#">最新电影</a></li>
+                        <li><a href="#">经典老片</a></li>
+                        <li><a href="#">4K专区</a></li>
+                        <li><a href="#">下载帮助</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>资源分类</h4>
+                    <ul>
+                        <li><a href="#">动作片</a></li>
+                        <li><a href="#">科幻片</a></li>
+                        <li><a href="#">喜剧片</a></li>
+                        <li><a href="#">纪录片</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>联系我们</h4>
+                    <ul>
+                        <li><a href="#">意见反馈</a></li>
+                        <li><a href="#">资源投稿</a></li>
+                        <li><a href="#">友情链接</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 小调网电影下载. All Rights Reserved. 本站内容仅供学习交流，请于下载后24小时内删除。</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Download Modal -->
+    <div class="modal" id="downloadModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle" style="margin-bottom: 1rem;">资源下载</h2>
+            <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">请选择您需要的下载源。为了保障下载速度，建议使用下载工具。</p>
+            
+            <div class="modal-form-group">
+                <label>选择画质：</label>
+                <select style="width: 100%; padding: 0.5rem; background: #000; border: 1px solid var(--border-color); color: white;">
+                    <option>1080P 高清 (MP4)</option>
+                    <option>蓝光 1080P (MKV)</option>
+                    <option>4K 超清 (MKV)</option>
+                    <option>杜比视界 (MKV)</option>
+                </select>
+            </div>
+
+            <div class="modal-links">
+                <a href="#" class="link-btn primary" onclick="alert('正在连接高速下载节点...')">高速直链</a>
+                <a href="#" class="link-btn secondary" onclick="alert('正在连接备用节点...')">备用节点</a>
+            </div>
+            <p style="font-size: 0.8rem; color: #666; text-align: center; margin-top: 1rem;">* 下载链接有效期为 24 小时</p>
+        </div>
+    </div>
+
+    <!-- Ad Script -->
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+
+    <script>
+        // Modal Logic
+        const modal = document.getElementById('downloadModal');
+        const modalTitle = document.getElementById('modalTitle');
+
+        function openModal(movieTitle) {
+            modalTitle.textContent = movieTitle;
+            modal.classList.add('active');
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+
+        // Tab Logic (Visual Only)
+        const tabs = document.querySelectorAll('.tab-item');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                tabs.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+                  </html>
