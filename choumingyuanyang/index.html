@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="臭名远扬 - 深度盘点与分析互联网、社会及商业领域中因不当行为或恶劣影响而广为人知的争议事件、人物与现象，提供客观事实与多维度的深度解析。">
+    <meta name="keywords" content="臭名远扬, 争议事件, 坏人好事, 社会热点, 网络黑料, 恶劣事件">
+    <title>臭名远扬-争议事件深度盘点与多维解析平台</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #1a1a1a;
+            --accent-color: #c92a2a;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-main: #212529;
+            --text-secondary: #6c757d;
+            --border-color: #e9ecef;
+            --spacing-unit: 1rem;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            color: var(--accent-color);
+        }
+
+        /* 布局容器 */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        /* 头部导航 */
+        header {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--text-main);
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--accent-color);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .search-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: var(--text-main);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: #fff;
+            padding: 4rem 0;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #ccc;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item h3 {
+            font-size: 2rem;
+            color: var(--accent-color);
+        }
+
+        .stat-item p {
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        /* 分类标签 */
+        .categories {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .cat-tag {
+            padding: 0.5rem 1.5rem;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            transition: all 0.2s;
+        }
+
+        .cat-tag:hover, .cat-tag.active {
+            background-color: var(--text-main);
+            color: #fff;
+            border-color: var(--text-main);
+        }
+
+        /* 内容网格 */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--border-color);
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 200px;
+            background-color: #eee;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-tag {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-color);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            line-height: 1.4;
+        }
+
+        .card-excerpt {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            flex: 1;
+        }
+
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: #999;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1rem;
+        }
+
+        /* 深度解析区 */
+        .analysis-section {
+            background-color: var(--card-bg);
+            padding: 3rem;
+            border-radius: 8px;
+            margin-bottom: 4rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .section-header {
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 1rem;
+        }
+
+        .section-header h2 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .analysis-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+        }
+
+        .analysis-list {
+            list-style: none;
+        }
+
+        .analysis-list li {
+            margin-bottom: 1.5rem;
+        }
+
+        .analysis-list h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+
+        .analysis-list p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        .analysis-text h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            margin-top: 2rem;
+        }
+
+        .analysis-text p {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            margin-bottom: 4rem;
+        }
+
+        .faq-item {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            background: #fff;
+        }
+
+        .faq-question:hover {
+            background-color: #fafafa;
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            background-color: #fcfcfc;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            max-height: 500px;
+        }
+
+        .faq-item.active .faq-question {
+            color: var(--accent-color);
+        }
+
+        /* 页脚 */
+        footer {
+            background-color: var(--text-main);
+            color: #fff;
+            padding: 4rem 0 2rem;
+            margin-top: auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand p {
+            color: #999;
+            font-size: 0.9rem;
+            max-width: 300px;
+        }
+
+        .footer-col h4 {
+            font-size: 1rem;
+            margin-bottom: 1.2rem;
+            color: #fff;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-col a {
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        .footer-col a:hover {
+            color: #fff;
+        }
+
+        .copyright {
+            text-align: center;
+            border-top: 1px solid #333;
+            padding-top: 2rem;
+            color: #666;
+            font-size: 0.85rem;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 992px) {
+            .content-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .analysis-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+                height: auto;
+                padding: 1rem 0;
+                gap: 1rem;
+            }
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container header-inner">
+        <a href="#" class="logo">
+            <span>⚠️</span> 臭名远扬
+        </a>
+        <nav>
+            <ul>
+                <li><a href="#">全部事件</a></li>
+                <li><a href="#">社会热点</a></li>
+                <li><a href="#">商业黑幕</a></li>
+                <li><a href="#">网络黑料</a></li>
+                <li><a href="#">深度解析</a></li>
+            </ul>
+        </nav>
+        <button class="search-btn" aria-label="搜索">🔍</button>
+    </div>
+</header>
+
+<main>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>记录那些令人发指的行为</h1>
+            <p>这里汇集了互联网、商业界及社会生活中因道德沦丧、违法乱纪而引发公愤，最终<span style="color:var(--accent-color)">臭名远扬</span>的真实案例。我们坚持客观陈述，还原事件真相。</p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <h3>1284</h3>
+                    <p>收录事件</p>
+                </div>
+                <div class="stat-item">
+                    <h3>850+</h3>
+                    <p>深度文章</p>
+                </div>
+                <div class="stat-item">
+                    <h3>50万+</h3>
+                    <p>关注者</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- 分类筛选 -->
+        <div class="categories">
+            <button class="cat-tag active">全部</button>
+            <button class="cat-tag">商业欺诈</button>
+            <button class="cat-tag">公共安全</button>
+            <button class="cat-tag">道德败坏</button>
+            <button class="cat-tag">环境破坏</button>
+            <button class="cat-tag">历史遗留</button>
+        </div>
+
+        <!-- 热门事件列表 -->
+        <section class="section-header" style="margin-top: 0;">
+            <h2>近期热门争议</h2>
+            <p style="color:var(--text-secondary)">近期关注度最高、舆论反响最激烈的事件盘点</p>
+        </section>
+
+        <div class="content-grid">
+            <!-- Card 1 -->
+            <article class="card">
+                <img src="https://picsum.photos/seed/evil1/400/250" alt="事件封面" class="card-img">
+                <div class="card-body">
+                    <span class="card-tag">商业欺诈</span>
+                    <h3 class="card-title">某知名理财平台暴雷：数万投资者血本无归</h3>
+                    <p class="card-excerpt">随着警方介入调查，该平台创始人卷款跑路的细节逐渐浮出水面，其利用高息诱惑收割社会底层投资者的手段令人咋舌。</p>
+                    <div class="card-meta">
+                        <span>2023-10-24</span>
+                        <span>👁 12.5k</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 2 -->
+            <article class="card">
+                <img src="https://picsum.photos/seed/evil2/400/250" alt="事件封面" class="card-img">
+                <div class="card-body">
+                    <span class="card-tag">公共安全</span>
+                    <h3 class="card-title">某网红为博眼球在景区泼洒油漆，破坏文物</h3>
+                    <p class="card-excerpt">该网红在社交媒体直播时，公然在国家级文物保护单位上喷涂恶搞文字，被当地文旅部门拘留并全网封杀。</p>
+                    <div class="card-meta">
+                        <span>2023-10-22</span>
+                        <span>👁 8.2k</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 3 -->
+            <article class="card">
+                <img src="https://picsum.photos/seed/evil3/400/250" alt="事件封面" class="card-img">
+                <div class="card-body">
+                    <span class="card-tag">食品安全</span>
+                    <h3 class="card-title">黑作坊生产“地沟油”流入校园食堂</h3>
+                    <p class="card-excerpt">记者卧底调查发现，部分不法商贩将餐饮废油加工成“地沟油”，高价卖给缺乏监管的农村中小学食堂。</p>
+                    <div class="card-meta">
+                        <span>2023-10-20</span>
+                        <span>👁 15.1k</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 4 -->
+            <article class="card">
+                <img src="https://picsum.photos/seed/evil4/400/250" alt="事件封面" class="card-img">
+                <div class="card-body">
+                    <span class="card-tag">网络暴力</span>
+                    <h3 class="card-title">键盘侠网暴致死抑郁症患者，施暴者被判刑</h3>
+                    <p class="card-excerpt">这起案件引发了全社会对于网络暴力的反思。多名参与人肉搜索和辱骂的网民最终因寻衅滋事罪受到法律制裁。</p>
+                    <div class="card-meta">
+                        <span>2023-10-18</span>
+                        <span>👁 20.3k</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 5 -->
+            <article class="card">
+                <img src="https://picsum.photos/seed/evil5/400/250" alt="事件封面" class="card-img">
+                <div class="card-body">
+                    <span class="card-tag">职场霸凌</span>
+                    <h3 class="card-title">某互联网大厂“996福报”背后的压榨真相</h3>
+                    <p class="card-excerpt">曝光的内部邮件显示，为了追求利润最大化，该公司长期实行强制加班制度，导致多名员工身心崩溃离职。</p>
+                    <div class="card-meta">
+                        <span>2023-10-15</span>
+                        <span>👁 9.8k</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 6 -->
+            <article class="card">
+                <img src="https://picsum.photos/seed/evil6/400/250" alt="事件封面" class="card-img">
+                <div class="card-body">
+                    <span class="card-tag">环保污染</span>
+                    <h3 class="card-title">化工厂深夜偷排污水，周边村庄水源污染</h3>
+                    <p class="card-excerpt">由于企业长期无视环保法规，导致村民饮用水出现异味，农作物大面积枯死，生态环境遭受不可逆的破坏。</p>
+                    <div class="card-meta">
+                        <span>2023-10-12</span>
+                        <span>👁 6.5k</span>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <!-- 深度解析区 -->
+        <section class="analysis-section">
+            <div class="section-header">
+                <h2>深度解析：为何这些行为会“臭名远扬”</h2>
+                <p style="color:var(--text-secondary)">从社会心理学和公共管理角度，剖析恶劣行为引发公愤的深层机制。</p>
+            </div>
+            <div class="analysis-content">
+                <ul class="analysis-list">
+                    <li>
+                        <h4>道德底线突破</h4>
+                        <p>当行为严重违背社会公序良俗，触犯公众的道德认知时，极易引发强烈的排斥和愤怒。</p>
+                    </li>
+                    <li>
+                        <h4>信息透明化</h4>
+                        <p>在社交媒体时代，真相往往难以被掩盖，细节的曝光加速了事件的发酵和传播。</p>
+                    </li>
+                    <li>
+                        <h4>利益相关者广泛</h4>
+                        <p>涉及弱势群体（如老人、儿童）或公共资源的事件，更容易激起公众的同情与义愤。</p>
+                    </li>
+                </ul>
+                <div class="analysis-text">
+                    <h3>警惕“破窗效应”</h3>
+                    <p>一些看似孤立的事件，往往反映了系统性或文化层面的深层次问题。例如，某些企业为了追求利润最大化而牺牲社会责任，这种行为如果得不到有效遏制，会形成不良的行业风气。公众的愤怒不仅仅针对个体，更是对这种“劣币驱逐良币”现象的不满。</p>
+                    <h3>法律与舆论的双重约束</h3>
+                    <p>近年来，随着法治建设的推进，单纯的“人肉搜索”和网络暴力已不再是解决问题的途径。真正的解决之道在于完善法律法规，提高违法成本，让每一个“臭名远扬”的案例都能成为警示后人的教材。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 常见问题 FAQ -->
+        <section class="faq-section">
+            <div class="section-header">
+                <h2>常见问题</h2>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">这些案例都是真实的吗？<span>+</span></div>
+                <div class="faq-answer">
+                    <p>是的，本站收录的内容均基于公开的新闻报道、警方通报或经核实的调查结果。我们致力于提供客观事实，而非杜撰谣言。</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">如何举报身边的恶劣行为？<span>+</span></div>
+                <div class="faq-answer">
+                    <p>建议您直接拨打110报警或通过当地12345政务服务热线进行举报。在网络上发布信息时，请确保事实准确，避免传播未经证实的内容。</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">网站如何保证中立性？<span>+</span></div>
+                <div class="faq-answer">
+                    <p>我们坚持“只陈述事实，不煽动情绪”的原则。在报道争议事件时，会同时呈现多方观点，并在文章末尾标注信息来源，以供读者参考。</p>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h3>⚠️ 臭名远扬</h3>
+                <p>一个致力于记录与反思社会负面现象的平台。我们希望通过曝光与解析，唤起公众的良知与法律意识，共同维护一个更清朗的社会环境。</p>
+            </div>
+            <div class="footer-col">
+                <h4>关于我们</h4>
+                <ul>
+                    <li><a href="#">平台介绍</a></li>
+                    <li><a href="#">编辑团队</a></li>
+                    <li><a href="#">联系方式</a></li>
+                    <li><a href="#">加入我们</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>内容分类</h4>
+                <ul>
+                    <li><a href="#">商业欺诈</a></li>
+                    <li><a href="#">网络黑料</a></li>
+                    <li><a href="#">食品安全</a></li>
+                    <li><a href="#">环境破坏</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>法律声明</h4>
+                <ul>
+                    <li><a href="#">用户协议</a></li>
+                    <li><a href="#">隐私政策</a></li>
+                    <li><a href="#">侵权申诉</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 臭名远扬平台 版权所有 | 仅供学习与参考</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // FAQ Toggle Logic
+    document.addEventListener('DOMContentLoaded', function() {
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            const icon = question.querySelector('span');
+            
+            question.addEventListener('click', () => {
+                // Close other items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                        otherItem.querySelector('span').textContent = '+';
+                    }
+                });
+
+                // Toggle current item
+                item.classList.toggle('active');
+                icon.textContent = item.classList.contains('active') ? '-' : '+';
+            });
+        });
+
+        // Simple Category Filter Simulation
+        const catTags = document.querySelectorAll('.cat-tag');
+        catTags.forEach(tag => {
+            tag.addEventListener('click', () => {
+                catTags.forEach(t => t.classList.remove('active'));
+                tag.classList.add('active');
+                // In a real app, this would filter content. 
+                // Here we just simulate visual feedback.
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
