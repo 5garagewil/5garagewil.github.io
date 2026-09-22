@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="海城二手房出售平台，提供海城最新二手房房源信息、价格走势、小区评测及购房指南。海量真实房源，助您在海城找到理想家园。">
+    <meta name="keywords" content="海城二手房出售,海城二手房,海城房产,海城租房,二手房价格">
+    <title>海城二手房出售-海城房产交易与房源信息查询平台</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #0066cc;
+            --primary-hover: #0052a3;
+            --secondary-color: #f5f7fa;
+            --text-main: #333333;
+            --text-secondary: #666666;
+            --text-light: #999999;
+            --border-color: #e1e4e8;
+            --white: #ffffff;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+            --radius: 8px;
+            --container-width: 1200px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--white);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Utility */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background-color: var(--border-color);
+            margin-left: 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-color);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 20px;
+            border-radius: var(--radius);
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-outline {
+            border: 1px solid var(--border-color);
+            background: transparent;
+            color: var(--text-main);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: 1px solid var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0066cc 0%, #004c99 100%);
+            padding: 60px 0;
+            color: var(--white);
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 36px;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .hero-text p {
+            font-size: 16px;
+            opacity: 0.9;
+            margin-bottom: 30px;
+            max-width: 500px;
+        }
+
+        .search-box {
+            background: var(--white);
+            padding: 20px;
+            border-radius: var(--radius);
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            box-shadow: var(--shadow-md);
+            max-width: 600px;
+        }
+
+        .form-group {
+            flex: 1;
+            min-width: 150px;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-bottom: 5px;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            border-color: var(--primary-color);
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-md);
+            opacity: 0.9;
+        }
+
+        /* Stats */
+        .stats-bar {
+            background: var(--secondary-color);
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 24px;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .stat-item p {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        /* Filters */
+        .filter-bar {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border-color);
+            background: var(--white);
+        }
+
+        .filter-list {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .filter-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            padding: 6px 12px;
+            border-radius: 20px;
+            transition: background 0.2s;
+        }
+
+        .filter-item:hover {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+        }
+
+        .filter-item.active {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        /* Property List */
+        .property-list {
+            padding: 40px 0;
+        }
+
+        .property-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 25px;
+        }
+
+        .property-card {
+            background: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+
+        .property-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-color);
+        }
+
+        .card-img-wrapper {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+            background-color: #eee;
+        }
+
+        .card-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .property-card:hover .card-img-wrapper img {
+            transform: scale(1.05);
+        }
+
+        .card-tag {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: rgba(0, 102, 204, 0.9);
+            color: var(--white);
+            font-size: 12px;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        .card-tag.urgent {
+            background-color: #ff4d4f;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-price {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 8px;
+        }
+
+        .card-price small {
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--text-secondary);
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .card-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+
+        .card-info span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px solid var(--secondary-color);
+            font-size: 12px;
+            color: var(--text-light);
+        }
+
+        .agent-info {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .agent-avatar {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: #ddd;
+        }
+
+        /* Guide Section */
+        .guide-section {
+            background-color: var(--secondary-color);
+            padding: 60px 0;
+        }
+
+        .guide-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .guide-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .guide-icon {
+            width: 50px;
+            height: 50px;
+            background-color: #e6f0ff;
+            color: var(--primary-color);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .guide-card h3 {
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+
+        .guide-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 60px 0;
+        }
+
+        .faq-grid {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border-color);
+            padding: 20px 0;
+        }
+
+        .faq-question {
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 20px;
+            color: var(--primary-color);
+        }
+
+        .faq-answer {
+            margin-top: 15px;
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.6;
+            display: none;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-question::after {
+            content: '-';
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a1a1a;
+            color: #ccc;
+            padding: 60px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand h2 {
+            color: var(--white);
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .footer-brand p {
+            font-size: 14px;
+            line-height: 1.8;
+            max-width: 300px;
+        }
+
+        .footer-links h4 {
+            color: var(--white);
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            font-size: 13px;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-text p {
+                margin: 0 auto 30px;
+            }
+            .search-box {
+                width: 100%;
+            }
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .guide-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .header-actions .btn {
+                display: none;
+            }
+            .header-actions .btn-outline {
+                display: inline-flex;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            .property-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-text h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                海城房产<span>优选</span>
+            </a>
+            <nav class="nav-links">
+                <a href="#" class="active">首页</a>
+                <a href="#">二手房出售</a>
+                <a href="#">二手房求购</a>
+                <a href="#">租房</a>
+                <a href="#">小区评测</a>
+                <a href="#">购房指南</a>
+            </nav>
+            <div class="header-actions">
+                <a href="#" class="btn btn-outline">登录</a>
+                <a href="#" class="btn btn-primary">发布房源</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1>在海城找到您的理想家园</h1>
+                <p>海量真实房源，实时价格更新，专业购房顾问一对一服务，助您轻松安家。</p>
+                <form class="search-box" onsubmit="event.preventDefault();">
+                    <div class="form-group">
+                        <label>区域/小区</label>
+                        <input type="text" placeholder="输入海城区域或小区名">
+                    </div>
+                    <div class="form-group">
+                        <label>价格范围</label>
+                        <select>
+                            <option>价格不限</option>
+                            <option>100万以内</option>
+                            <option>100-200万</option>
+                            <option>200-300万</option>
+                            <option>300万以上</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>户型</label>
+                        <select>
+                            <option>户型不限</option>
+                            <option>1室</option>
+                            <option>2室</option>
+                            <option>3室</option>
+                            <option>4室及以上</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="height: 42px;">搜索房源</button>
+                </form>
+            </div>
+            <div class="hero-image">
+                <img src="https://picsum.photos/seed/house1/600/400" alt="海城优质房源示意图">
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <section class="stats-bar">
+        <div class="container stats-grid">
+            <div class="stat-item">
+                <h3>12,580</h3>
+                <p>在售房源</p>
+            </div>
+            <div class="stat-item">
+                <h3>3,420</h3>
+                <p>本月新增</p>
+            </div>
+            <div class="stat-item">
+                <h3>8,900</h3>
+                <p>累计成交</p>
+            </div>
+            <div class="stat-item">
+                <h3>98%</h3>
+                <p>用户好评</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filters -->
+    <section class="filter-bar">
+        <div class="container">
+            <div class="filter-list">
+                <div class="filter-item active">最新发布</div>
+                <div class="filter-item">价格从低到高</div>
+                <div class="filter-item">价格从高到低</div>
+                <div class="filter-item">距离最近</div>
+                <div class="filter-item">名校学区</div>
+                <div class="filter-item">地铁口</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container property-list">
+        <div class="section-title">
+            <h2>热门二手房出售</h2>
+            <a href="#" style="font-size: 14px; color: var(--primary-color);">查看更多 ></a>
+        </div>
+
+        <div class="property-grid">
+            <!-- Card 1 -->
+            <article class="property-card">
+                <div class="card-img-wrapper">
+                    <span class="card-tag">急售</span>
+                    <img src="https://picsum.photos/seed/house2/400/300" alt="海城阳光花园两居室">
+                </div>
+                <div class="card-content">
+                    <div class="card-price">280万 <small>单价: 15,200元/㎡</small></div>
+                    <h3 class="card-title">海城阳光花园 3室2厅 南北通透 满五唯一</h3>
+                    <div class="card-info">
+                        <span>89㎡</span>
+                        <span>中楼层 / 11层</span>
+                        <span>简装</span>
+                        <span>1998年建</span>
+                    </div>
+                    <div class="card-footer">
+                        <span>售: 王经理</span>
+                        <span>1小时前更新</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 2 -->
+            <article class="property-card">
+                <div class="card-img-wrapper">
+                    <img src="https://picsum.photos/seed/house3/400/300" alt="海城翡翠湾精装三居">
+                </div>
+                <div class="card-content">
+                    <div class="card-price">450万 <small>单价: 18,000元/㎡</small></div>
+                    <h3 class="card-title">海城翡翠湾 3室2厅 精装修 视野开阔</h3>
+                    <div class="card-info">
+                        <span>100㎡</span>
+                        <span>高楼层 / 24层</span>
+                        <span>精装</span>
+                        <span>2015年建</span>
+                    </div>
+                    <div class="card-footer">
+                        <span>售: 李女士</span>
+                        <span>3小时前更新</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 3 -->
+            <article class="property-card">
+                <div class="card-img-wrapper">
+                    <span class="card-tag">学区房</span>
+                    <img src="https://picsum.photos/seed/house4/400/300" alt="海城第一实验小学学区房">
+                </div>
+                <div class="card-content">
+                    <div class="card-price">580万 <small>单价: 22,000元/㎡</small></div>
+                    <h3 class="card-title">海城第一实验小学学区房 2室1厅 学位占用</h3>
+                    <div class="card-info">
+                        <span>85㎡</span>
+                        <span>低楼层 / 5层</span>
+                        <span>中装</span>
+                        <span>2005年建</span>
+                    </div>
+                    <div class="card-footer">
+                        <span>售: 张中介</span>
+                        <span>昨天更新</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 4 -->
+            <article class="property-card">
+                <div class="card-img-wrapper">
+                    <img src="https://picsum.photos/seed/house5/400/300" alt="海城老城区两室">
+                </div>
+                <div class="card-content">
+                    <div class="card-price">190万 <small>单价: 11,500元/㎡</small></div>
+                    <h3 class="card-title">海城老城区中心 2室1厅 近公交站 生活便利</h3>
+                    <div class="card-info">
+                        <span>80㎡</span>
+                        <span>中层 / 18层</span>
+                        <span>简装</span>
+                        <span>1990年建</span>
+                    </div>
+                    <div class="card-footer">
+                        <span>售: 刘先生</span>
+                        <span>2天前更新</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 5 -->
+            <article class="property-card">
+                <div class="card-img-wrapper">
+                    <img src="https://picsum.photos/seed/house6/400/300" alt="海城公园旁大户型">
+                </div>
+                <div class="card-content">
+                    <div class="card-price">680万 <small>单价: 19,500元/㎡</small></div>
+                    <h3 class="card-title">海城公园壹号 4室2厅 豪华装修 产权清晰</h3>
+                    <div class="card-info">
+                        <span>110㎡</span>
+                        <span>顶楼 / 30层</span>
+                        <span>豪华装修</span>
+                        <span>2018年建</span>
+                    </div>
+                    <div class="card-footer">
+                        <span>售: 陈总监</span>
+                        <span>3天前更新</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 6 -->
+            <article class="property-card">
+                <div class="card-img-wrapper">
+                    <span class="card-tag">急售</span>
+                    <img src="https://picsum.photos/seed/house7/400/300" alt="海城高铁站附近公寓">
+                </div>
+                <div class="card-content">
+                    <div class="card-price">85万 <small>单价: 9,800元/㎡</small></div>
+                    <h3 class="card-title">海城高铁新城 公寓LOFT 1.8米层高 投资首选</h3>
+                    <div class="card-info">
+                        <span>50㎡</span>
+                        <span>中层 / 6层</span>
+                        <span>精装</span>
+                        <span>2020年建</span>
+                    </div>
+                    <div class="card-footer">
+                        <span>售: 赵经理</span>
+                        <span>4天前更新</span>
+                    </div>
+                </div>
+            </article>
+        </div>
+        
+        <div style="text-align: center; margin-top: 40px;">
+            <button class="btn btn-outline">加载更多房源</button>
+        </div>
+    </main>
+
+    <!-- Guide Section -->
+    <section class="guide-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>购房指南</h2>
+            </div>
+            <div class="guide-grid">
+                <div class="guide-card">
+                    <div class="guide-icon">🛡️</div>
+                    <h3>交易安全须知</h3>
+                    <p>在海城二手房交易中，请务必通过正规渠道签约，了解“五证”及房屋产权是否清晰，谨防资金风险。</p>
+                </div>
+                <div class="guide-card">
+                    <div class="guide-icon">💰</div>
+                    <h3>税费计算详解</h3>
+                    <p>了解契税、个税、增值税及附加的计算方式。不同房龄、面积及业主情况会影响最终税费支出。</p>
+                </div>
+                <div class="guide-card">
+                    <div class="guide-icon">📝</div>
+                    <h3>过户流程指引</h3>
+                    <p>从网签备案到缴税，再到领取新房产证，详细的过户流程图帮助您在海城顺利完成房产过户。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>常见问题</h2>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">海城二手房交易需要多长时间？</div>
+                    <div class="faq-answer">在海城，二手房交易一般需要30-60天左右。具体时间取决于房款支付速度、过户效率以及贷款审批进度。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">如何判断海城小区的升值潜力？</div>
+                    <div class="faq-answer">主要关注周边配套（如地铁、学校、医院）、城市规划（如新商业中心、产业园区）以及小区本身的物业维护情况。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">没有房产证的房子可以买吗？</div>
+                    <div class="faq-answer">不建议购买。无证房屋存在极大的法律风险，可能无法过户，且无法作为抵押物，甚至可能被拆除。</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h2>海城房产优选</h2>
+                    <p>专注海城本地二手房交易服务，致力于为购房者提供真实、透明、便捷的房产信息平台。让每一次安居都更安心。</p>
+                </div>
+                <div class="footer-links">
+                    <h4>关于我们</h4>
+                    <ul>
+                        <li><a href="#">平台介绍</a></li>
+                        <li><a href="#">加入我们</a></li>
+                        <li><a href="#">联系方式</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>服务支持</h4>
+                    <ul>
+                        <li><a href="#">购房指南</a></li>
+                        <li><a href="#">租房服务</a></li>
+                        <li><a href="#">物业咨询</a></li>
+                        <li><a href="#">帮助中心</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>联系方式</h4>
+                    <ul>
+                        <li>客服热线: 0412-1234567</li>
+                        <li>业务合作: 138-0000-0000</li>
+                        <li>电子邮箱: service@haicheng.com</li>
+                        <li>地址: 辽宁省海城市中心广场A座</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 海城房产优选平台 版权所有 | 辽ICP备12345678号</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple FAQ Toggle Logic
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', event => {
+                const parent = item.parentElement;
+                parent.classList.toggle('active');
+            });
+        });
+
+        // Filter Logic Simulation
+        document.querySelectorAll('.filter-item').forEach(item => {
+            item.addEventListener('click', event => {
+                document.querySelectorAll('.filter-item').forEach(i => i.classList.remove('active'));
+                event.target.classList.add('active');
+                // In a real app, this would trigger a filter function
+            });
+        });
+    </script>
+</body>
+  </html>
