@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="祸水小妖精:看朕收了你 - 专为喜爱古风言情、宫廷权谋与反差萌角色的读者打造的沉浸式小说阅读平台。收录高人气古言小说，提供免费在线阅读与章节更新服务。">
+    <meta name="keywords" content="祸水小妖精:看朕收了你,古言小说,宫廷小说,免费小说阅读,在线小说">
+    <title>祸水小妖精:看朕收了你 - 沉浸式古言小说阅读平台</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #8e2de2;
+            --secondary-color: #4a00e0;
+            --accent-color: #ff007f;
+            --bg-color: #f8f5f2;
+            --card-bg: #ffffff;
+            --text-main: #2c3e50;
+            --text-sub: #7f8c8d;
+            --border-radius: 12px;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* 布局容器 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 顶部导航 */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 15px 0;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: var(--text-main);
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .btn-login {
+            padding: 8px 24px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 20px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(142, 45, 226, 0.4);
+        }
+
+        /* Hero 区域 */
+        .hero {
+            position: relative;
+            padding: 80px 0;
+            background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+            overflow: hidden;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .tag {
+            display: inline-block;
+            background: rgba(255, 0, 127, 0.1);
+            color: var(--accent-color);
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: var(--text-main);
+        }
+
+        .hero h1 span {
+            color: var(--primary-color);
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-sub);
+            margin-bottom: 30px;
+            max-width: 500px;
+        }
+
+        .hero-image {
+            flex: 1;
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transform: perspective(1000px) rotateY(-5deg) rotateX(2deg);
+            transition: var(--transition);
+        }
+
+        .hero-image:hover img {
+            transform: perspective(1000px) rotateY(0) rotateX(0);
+        }
+
+        /* 热门榜单 */
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title::before {
+            content: '';
+            display: block;
+            width: 6px;
+            height: 28px;
+            background: var(--primary-color);
+            border-radius: 3px;
+        }
+
+        .ranking-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+        }
+
+        .rank-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .rank-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .rank-number {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-weight: 800;
+            font-size: 16px;
+            z-index: 2;
+        }
+
+        .rank-1 .rank-number { background: #ffd700; color: #fff; box-shadow: 0 2px 8px rgba(255, 215, 0, 0.4); }
+        .rank-2 .rank-number { background: #c0c0c0; color: #fff; }
+        .rank-3 .rank-number { background: #cd7f32; color: #fff; }
+
+        .rank-img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+        }
+
+        .rank-info {
+            padding: 15px;
+        }
+
+        .rank-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .rank-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: var(--text-sub);
+        }
+
+        .rank-tag {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        /* 分类浏览 */
+        .categories-section {
+            padding: 60px 0;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .category-card {
+            background: var(--card-bg);
+            padding: 30px 20px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
+
+        .category-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+
+        .cat-icon {
+            font-size: 32px;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .category-card h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .category-card p {
+            font-size: 13px;
+            color: var(--text-sub);
+        }
+
+        /* 推荐阅读列表 */
+        .recommendation-section {
+            padding: 60px 0;
+            background-color: #fff;
+        }
+
+        .book-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .book-item {
+            display: flex;
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            align-items: center;
+        }
+
+        .book-item:hover {
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+
+        .book-cover {
+            width: 100px;
+            height: 140px;
+            border-radius: 8px;
+            object-fit: cover;
+            flex-shrink: 0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .book-details {
+            margin-left: 25px;
+            flex: 1;
+        }
+
+        .book-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-main);
+        }
+
+        .book-desc {
+            font-size: 14px;
+            color: var(--text-sub);
+            margin-bottom: 15px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            height: 40px;
+        }
+
+        .book-tags {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .tag-pill {
+            font-size: 12px;
+            padding: 3px 8px;
+            border-radius: 4px;
+            background: #f0f0f0;
+            color: #666;
+        }
+
+        .tag-pill.hot { background: rgba(255, 0, 127, 0.1); color: var(--accent-color); }
+        .tag-pill.new { background: rgba(142, 45, 226, 0.1); color: var(--primary-color); }
+
+        .book-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .btn-read {
+            padding: 10px 30px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .btn-read:hover {
+            box-shadow: 0 5px 15px rgba(142, 45, 226, 0.3);
+        }
+
+        .btn-collect {
+            color: var(--text-sub);
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: var(--transition);
+        }
+
+        .btn-collect:hover, .btn-collect.active {
+            color: var(--primary-color);
+        }
+
+        /* 页脚 */
+        footer {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 60px 0 20px;
+            margin-top: 60px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: #bdc3c7;
+            transition: var(--transition);
+        }
+
+        .footer-col ul li a:hover {
+            color: #fff;
+            padding-left: 5px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 992px) {
+            .hero-content {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                margin: 0 auto 30px;
+            }
+
+            .ranking-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* 简化移动端处理 */
+            }
+
+            .ranking-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .book-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .book-cover {
+                width: 100%;
+                height: 200px;
+            }
+
+            .book-actions {
+                width: 100%;
+                justify-content: space-between;
+                margin-top: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 顶部导航 -->
+    <header>
+        <div class="container nav-wrapper">
+            <a href="#" class="logo">古韵书阁</a>
+            <nav class="nav-links">
+                <a href="#">首页</a>
+                <a href="#">宫廷权谋</a>
+                <a href="#">仙侠玄幻</a>
+                <a href="#">穿越时空</a>
+                <a href="#">完结专区</a>
+            </nav>
+            <a href="#" class="btn-login">登录 / 注册</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero 首屏 -->
+        <section class="hero">
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <span class="tag">今日推荐</span>
+                    <h1>祸水小妖精:看朕收了你</h1>
+                    <p>她本是深宫中不起眼的小宫女，却因一颗神秘珠子卷入朝堂纷争。他是权倾天下的冷面帝王，却在一次意外中收下了这只“小祸水”。当祸水遇上暴君，是玩火自焚，还是棋逢对手？</p>
+                    <div style="display: flex; gap: 15px;">
+                        <a href="#" class="btn-read">立即阅读</a>
+                        <a href="#" style="padding: 10px 30px; border: 1px solid var(--primary-color); border-radius: 25px; color: var(--primary-color); font-weight: 600;">加入书架</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <!-- 使用 picsum 作为占位符，模拟封面图 -->
+                    <img src="https://picsum.photos/seed/ancient1/600/400" alt="祸水小妖精:看朕收了你 小说封面">
+                </div>
+            </div>
+        </section>
+
+        <!-- 热门榜单 -->
+        <section class="container" style="padding: 60px 20px;">
+            <h2 class="section-title">热门榜单</h2>
+            <div class="ranking-grid">
+                <article class="rank-card rank-1">
+                    <div class="rank-number">1</div>
+                    <img src="https://picsum.photos/seed/novel1/300/400" class="rank-img" alt="小说封面">
+                    <div class="rank-info">
+                        <h3 class="rank-title">祸水小妖精:看朕收了你</h3>
+                        <div class="rank-meta">
+                            <span class="rank-tag">宫廷</span>
+                            <span>1200万热度</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="rank-card rank-2">
+                    <div class="rank-number">2</div>
+                    <img src="https://picsum.photos/seed/novel2/300/400" class="rank-img" alt="小说封面">
+                    <div class="rank-info">
+                        <h3 class="rank-title">冷面皇上的掌心宠</h3>
+                        <div class="rank-meta">
+                            <span class="rank-tag">甜宠</span>
+                            <span>980万热度</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="rank-card rank-3">
+                    <div class="rank-number">3</div>
+                    <img src="https://picsum.photos/seed/novel3/300/400" class="rank-img" alt="小说封面">
+                    <div class="rank-info">
+                        <h3 class="rank-title">凤临天下：摄政王的宠妃</h3>
+                        <div class="rank-meta">
+                            <span class="rank-tag">重生</span>
+                            <span>850万热度</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="rank-card">
+                    <div class="rank-number">4</div>
+                    <img src="https://picsum.photos/seed/novel4/300/400" class="rank-img" alt="小说封面">
+                    <div class="rank-info">
+                        <h3 class="rank-title">步步惊心：穿越古代</h3>
+                        <div class="rank-meta">
+                            <span class="rank-tag">穿越</span>
+                            <span>720万热度</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="rank-card">
+                    <div class="rank-number">5</div>
+                    <img src="https://picsum.photos/seed/novel5/300/400" class="rank-img" alt="小说封面">
+                    <div class="rank-info">
+                        <h3 class="rank-title">王爷，王妃又跑路了</h3>
+                        <div class="rank-meta">
+                            <span class="rank-tag">搞笑</span>
+                            <span>650万热度</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- 分类浏览 -->
+        <section class="categories-section">
+            <div class="container">
+                <h2 class="section-title">分类浏览</h2>
+                <div class="category-grid">
+                    <div class="category-card">
+                        <span class="cat-icon">👑</span>
+                        <h3>宫廷权谋</h3>
+                        <p>深宫旧梦，帝王心术</p>
+                    </div>
+                    <div class="category-card">
+                        <span class="cat-icon">🐉</span>
+                        <h3>仙侠玄幻</h3>
+                        <p>修真问道，神魔之战</p>
+                    </div>
+                    <div class="category-card">
+                        <span class="cat-icon">⏳</span>
+                        <h3>穿越时空</h3>
+                        <p>现代灵魂，古代生存</p>
+                    </div>
+                    <div class="category-card">
+                        <span class="cat-icon">💖</span>
+                        <h3>甜宠爽文</h3>
+                        <p>一对一，无虐深情</p>
+                    </div>
+                    <div class="category-card">
+                        <span class="cat-icon">👻</span>
+                        <h3>悬疑灵异</h3>
+                        <p>探案解谜，鬼怪传说</p>
+                    </div>
+                    <div class="category-card">
+                        <span class="cat-icon">⚔️</span>
+                        <h3>武侠江湖</h3>
+                        <p>刀光剑影，快意恩仇</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 推荐阅读 -->
+        <section class="recommendation-section">
+            <div class="container">
+                <h2 class="section-title">为您推荐</h2>
+                <div class="book-list">
+                    <!-- 小说条目 1 -->
+                    <article class="book-item">
+                        <img src="https://picsum.photos/seed/novel1/200/280" alt="小说封面" class="book-cover">
+                        <div class="book-details">
+                            <h3 class="book-title">祸水小妖精:看朕收了你</h3>
+                            <div class="book-tags">
+                                <span class="tag-pill hot">热门</span>
+                                <span class="tag-pill new">更新中</span>
+                                <span class="tag-pill">古风</span>
+                            </div>
+                            <p class="book-desc">她本是深宫中不起眼的小宫女，却因一颗神秘珠子卷入朝堂纷争。他是权倾天下的冷面帝王，却在一次意外中收下了这只“小祸水”。当祸水遇上暴君，是玩火自焚，还是棋逢对手？本文讲述了两个性格迥异的人如何在权谋的漩涡中相互试探、最终相知相守的故事。</p>
+                            <div class="book-actions">
+                                <a href="#" class="btn-read">立即阅读</a>
+                                <div class="btn-collect" onclick="toggleCollect(this)">
+                                    <span>★</span> 收藏
+                                </div>
+                                <span style="font-size: 13px; color: #999;">上次阅读至：第 128 章</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 小说条目 2 -->
+                    <article class="book-item">
+                        <img src="https://picsum.photos/seed/novel6/200/280" alt="小说封面" class="book-cover">
+                        <div class="book-details">
+                            <h3 class="book-title">摄政王的小娇妻</h3>
+                            <div class="book-tags">
+                                <span class="tag-pill">甜宠</span>
+                                <span class="tag-pill">大结局</span>
+                            </div>
+                            <p class="book-desc">她是现代金牌律师，穿越成相府不受宠的嫡女。面对渣男未婚夫和恶毒继妹，她反手就是一个反击。谁知那个在朝堂上杀伐果断的摄政王，竟然是她名义上的“便宜弟弟”？</p>
+                            <div class="book-actions">
+                                <a href="#" class="btn-read">立即阅读</a>
+                                <div class="btn-collect" onclick="toggleCollect(this)">
+                                    <span>★</span> 收藏
+                                </div>
+                                <span style="font-size: 13px; color: #999;">已完结</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 小说条目 3 -->
+                    <article class="book-item">
+                        <img src="https://picsum.photos/seed/novel7/200/280" alt="小说封面" class="book-cover">
+                        <div class="book-details">
+                            <h3 class="book-title">将军令：误惹冷面将军</h3>
+                            <div class="book-tags">
+                                <span class="tag-pill">权谋</span>
+                                <span class="tag-pill">虐恋</span>
+                            </div>
+                            <p class="book-desc">她为了家族荣耀，被迫嫁给那个传说中杀人不眨眼的镇北将军。新婚之夜，他红着眼将她抵在墙上：“女人，你逃不掉的。”</p>
+                            <div class="book-actions">
+                                <a href="#" class="btn-read">立即阅读</a>
+                                <div class="btn-collect" onclick="toggleCollect(this)">
+                                    <span>★</span> 收藏
+                                </div>
+                                <span style="font-size: 13px; color: #999;">连载中</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>关于我们</h4>
+                    <ul>
+                        <li><a href="#">网站简介</a></li>
+                        <li><a href="#">版权声明</a></li>
+                        <li><a href="#">联系方式</a></li>
+                        <li><a href="#">加入我们</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>阅读指南</h4>
+                    <ul>
+                        <li><a href="#">如何开始阅读</a></li>
+                        <li><a href="#">VIP充值说明</a></li>
+                        <li><a href="#">阅读器下载</a></li>
+                        <li><a href="#">常见问题</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>友情链接</h4>
+                    <ul>
+                        <li><a href="#">起点中文网</a></li>
+                        <li><a href="#">晋江文学城</a></li>
+                        <li><a href="#">纵横中文网</a></li>
+                        <li><a href="#">红袖添香</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>关注我们</h4>
+                    <ul>
+                        <li><a href="#">微信公众号</a></li>
+                        <li><a href="#">新浪微博</a></li>
+                        <li><a href="#">QQ群：123456789</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 古韵书阁. All Rights Reserved. 本站内容均为用户上传，仅供学习交流使用。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 简单的交互脚本
+        function toggleCollect(element) {
+            element.classList.toggle('active');
+            const icon = element.querySelector('span');
+            if (element.classList.contains('active')) {
+                icon.textContent = '★';
+                icon.style.color = 'var(--primary-color)';
+            } else {
+                icon.textContent = '☆';
+                icon.style.color = '#999';
+            }
+        }
+    </script>
+</body>
+                                                </html>
