@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="每日瑜伽App官网 - 科学定制每日瑜伽课程，涵盖晨间唤醒、睡前放松、塑形燃脂与产后恢复。提供专业AI体态矫正、冥想引导及饮食建议，助您随时随地开启健康生活。">
+    <meta name="keywords" content="每日瑜伽app, 瑜伽App, 在线瑜伽, 瑜伽课程, 冥想, 健身, 体态矫正">
+    <title>每日瑜伽app - 科学定制每日瑜伽课程与冥想指南</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #6B8E23;
+            --primary-dark: #556B2F;
+            --secondary-color: #F5F5DC;
+            --text-main: #333333;
+            --text-light: #666666;
+            --bg-body: #FAFAFA;
+            --bg-white: #FFFFFF;
+            --accent-orange: #FF8C00;
+            --spacing-unit: 16px;
+            --container-width: 1200px;
+            --border-radius: 12px;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        /* Header & Nav */
+        header {
+            background-color: var(--bg-white);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 32px;
+        }
+
+        nav a {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text-main);
+            transition: var(--transition);
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 16px;
+        }
+
+        .btn {
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-color);
+            color: var(--bg-white);
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: var(--bg-white);
+            box-shadow: 0 4px 10px rgba(107, 142, 35, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            background: linear-gradient(135deg, #f0fdf4 0%, #fffbeb 100%);
+            padding: 80px 0;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 48px;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            color: var(--text-main);
+        }
+
+        .hero-text h1 span {
+            color: var(--primary-color);
+        }
+
+        .hero-text p {
+            font-size: 18px;
+            color: var(--text-light);
+            margin-bottom: 32px;
+            max-width: 90%;
+        }
+
+        .hero-tags {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 32px;
+        }
+
+        .tag {
+            background: rgba(107, 142, 35, 0.1);
+            color: var(--primary-color);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .hero-image img {
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .trust-badges {
+            position: absolute;
+            bottom: -20px;
+            left: -20px;
+            background: white;
+            padding: 16px 24px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .stars {
+            color: #FFC107;
+            font-weight: bold;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 36px;
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            color: var(--text-light);
+            font-size: 18px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--bg-white);
+            padding: 32px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .icon-box {
+            width: 64px;
+            height: 64px;
+            background: var(--secondary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            color: var(--primary-color);
+            font-size: 28px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 12px;
+            font-size: 20px;
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+            font-size: 15px;
+        }
+
+        /* Courses Section */
+        .courses {
+            padding: 80px 0;
+            background-color: var(--bg-white);
+        }
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .course-card {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            background: var(--bg-body);
+            border: 1px solid #eee;
+            transition: var(--transition);
+        }
+
+        .course-card:hover {
+            box-shadow: var(--shadow);
+            border-color: transparent;
+        }
+
+        .course-img {
+            height: 180px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .course-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .course-card:hover .course-img img {
+            transform: scale(1.05);
+        }
+
+        .course-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: rgba(0,0,0,0.6);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+
+        .course-info {
+            padding: 20px;
+        }
+
+        .course-info h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .course-info p {
+            color: var(--text-light);
+            font-size: 14px;
+            margin-bottom: 16px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 60px 0;
+            background: var(--primary-color);
+            color: white;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .stat-item h3 {
+            font-size: 36px;
+            margin-bottom: 8px;
+        }
+
+        .stat-item p {
+            opacity: 0.9;
+            font-size: 16px;
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 80px 0;
+            background: var(--bg-white);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #eee;
+            padding: 24px 0;
+        }
+
+        .faq-question {
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 24px;
+            color: var(--primary-color);
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            color: var(--text-light);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            margin-top: 16px;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 60px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand p {
+            color: #bdc3c7;
+            margin-top: 16px;
+            font-size: 14px;
+            max-width: 300px;
+        }
+
+        .footer-col h4 {
+            font-size: 16px;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul li a {
+            color: #bdc3c7;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #34495e;
+            padding-top: 20px;
+            text-align: center;
+            font-size: 13px;
+            color: #95a5a6;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-tags {
+                justify-content: center;
+            }
+
+            .feature-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none; /* Simplified for mobile demo */
+            }
+
+            .header-actions .btn-outline {
+                display: none;
+            }
+
+            .hero-text h1 {
+                font-size: 32px;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--primary-color)">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                每日瑜伽<span>App</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#courses">精选课程</a></li>
+                    <li><a href="#features">功能特色</a></li>
+                    <li><a href="#faq">常见问题</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="#" class="btn btn-outline">登录</a>
+                <a href="#" class="btn btn-primary">免费下载</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1>每天15分钟，<br>遇见更健康的自己</h1>
+                <p>每日瑜伽App依托专业瑜伽教练团队，为您定制科学、高效的每日训练计划。无论您是初学者还是资深爱好者，都能在这里找到适合自己的节奏。</p>
+                <div class="hero-tags">
+                    <span class="tag">AI体态矫正</span>
+                    <span class="tag">冥想引导</span>
+                    <span class="tag">零基础入门</span>
+                </div>
+                <div style="display: flex; gap: 16px; flex-wrap: wrap; justify-content: inherit;">
+                    <a href="#" class="btn btn-primary">立即开始练习</a>
+                    <a href="#" class="btn btn-outline">查看课程表</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://picsum.photos/seed/yoga_hero/600/400" alt="瑜伽练习场景" width="600" height="400">
+                <div class="trust-badges">
+                    <div class="stars">★★★★★</div>
+                    <div>
+                        <strong>4.9分</strong>
+                        <span style="display:block; font-size:12px; color:#666;">超100万用户信赖</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container stats-grid">
+            <div class="stat-item">
+                <h3>1000+</h3>
+                <p>专业瑜伽课程</p>
+            </div>
+            <div class="stat-item">
+                <h3>50万+</h3>
+                <p>日活用户</p>
+            </div>
+            <div class="stat-item">
+                <h3>30天</h3>
+                <p>平均减脂周期</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>为什么选择每日瑜伽？</h2>
+                <p>不仅仅是记录，更是全方位的健康管理伙伴</p>
+            </div>
+            <div class="feature-grid">
+                <article class="feature-card">
+                    <div class="icon-box">🧘</div>
+                    <h3>每日定制计划</h3>
+                    <p>根据您的身体数据、时间和目标，AI算法自动生成专属每日瑜伽流程，拒绝盲目跟练。</p>
+                </article>
+                <article class="feature-card">
+                    <div class="icon-box">👁️</div>
+                    <h3>AI体态实时纠错</h3>
+                    <p>通过手机前置摄像头捕捉动作，实时分析体式标准度，提供语音和视觉双重反馈指导。</p>
+                </article>
+                <article class="feature-card">
+                    <div class="icon-box">🌙</div>
+                    <h3>全方位冥想引导</h3>
+                    <p>提供助眠、减压、专注等多种场景的冥想音频，帮助您在喧嚣生活中找到内心的宁静。</p>
+                </article>
+                <article class="feature-card">
+                    <div class="icon-box">📊</div>
+                    <h3>数据健康追踪</h3>
+                    <p>详细记录心率、消耗卡路里及身体柔韧性变化，生成可视化健康周报。</p>
+                </article>
+                <article class="feature-card">
+                    <div class="icon-box">🤰</div>
+                    <h3>产后修复专区</h3>
+                    <p>专为产后妈妈设计的恢复课程，科学指导盆底肌修复与身材重塑，温柔呵护。</p>
+                </article>
+                <article class="feature-card">
+                    <div class="icon-box">📱</div>
+                    <h3>离线随时练</h3>
+                    <p>支持视频离线下载，无需网络也能随时随地打开App，享受流畅的练习体验。</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses" class="courses">
+        <div class="container">
+            <div class="section-header">
+                <h2>热门精选课程</h2>
+                <p>覆盖晨间唤醒、燃脂塑形、柔韧性提升等多种需求</p>
+            </div>
+            <div class="course-grid">
+                <article class="course-card">
+                    <div class="course-img">
+                        <span class="course-badge">晨间</span>
+                        <img src="https://picsum.photos/seed/yoga_morning/400/300" alt="晨间唤醒瑜伽">
+                    </div>
+                    <div class="course-info">
+                        <h3>晨间唤醒：活力瑜伽</h3>
+                        <p>15分钟唤醒身体，促进血液循环，开启充满活力的一天。适合所有初学者。</p>
+                        <div class="course-meta">
+                            <span class="meta-item">⏱ 15分钟</span>
+                            <span class="meta-item">🔥 简单</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="course-card">
+                    <div class="course-img">
+                        <span class="course-badge">燃脂</span>
+                        <img src="https://picsum.photos/seed/yoga_burn/400/300" alt="流瑜伽燃脂">
+                    </div>
+                    <div class="course-info">
+                        <h3>流瑜伽：全身燃脂</h3>
+                        <p>通过连续流动的动作组合，快速提升心率，高效燃烧卡路里，塑造紧致线条。</p>
+                        <div class="course-meta">
+                            <span class="meta-item">⏱ 45分钟</span>
+                            <span class="meta-item">🔥 中等</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="course-card">
+                    <div class="course-img">
+                        <span class="course-badge">体态</span>
+                        <img src="https://picsum.photos/seed/yoga_pose/400/300" alt="改善体态">
+                    </div>
+                    <div class="course-info">
+                        <h3>改善圆肩驼背</h3>
+                        <p>针对久坐人群设计的矫正序列，打开胸腔，拉伸肩颈，缓解肌肉紧张与疼痛。</p>
+                        <div class="course-meta">
+                            <span class="meta-item">⏱ 20分钟</span>
+                            <span class="meta-item">🔥 简单</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="course-card">
+                    <div class="course-img">
+                        <span class="course-badge">睡前</span>
+                        <img src="https://picsum.photos/seed/yoga_sleep/400/300" alt="助眠瑜伽">
+                    </div>
+                    <div class="course-info">
+                        <h3>睡前放松：深度睡眠</h3>
+                        <p>舒缓的拉伸与呼吸练习，降低皮质醇水平，帮助您快速进入深度睡眠状态。</p>
+                        <div class="course-meta">
+                            <span class="meta-item">⏱ 25分钟</span>
+                            <span class="meta-item">🔥 简单</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="#" class="btn btn-outline">查看全部课程</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq">
+        <div class="container faq-container">
+            <div class="section-header">
+                <h2>常见问题解答</h2>
+                <p>关于每日瑜伽App的使用与功能</p>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">每日瑜伽App完全免费吗？</div>
+                    <div class="faq-answer">
+                        <p>App提供基础课程和冥想音频免费使用。如果您想解锁全部高清视频课程、AI体态分析报告以及个性化训练计划，需要订阅高级会员。</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">我没有任何瑜伽基础，可以使用吗？</div>
+                    <div class="faq-answer">
+                        <p>当然可以。App设有专门的“零基础入门”专区，所有课程都标注了难度等级（简单、中等、困难），并配有详细的动作分解讲解。</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">需要购买瑜伽垫或其他设备吗？</div>
+                    <div class="faq-answer">
+                        <p>不需要。App包含大量在床上、椅子上或地毯上即可完成的动作。如果您有条件，准备一张防滑瑜伽垫会让体验更舒适。</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">支持哪些移动设备？</div>
+                    <div class="faq-answer">
+                        <p>每日瑜伽App支持iOS 13.0及以上版本以及Android 8.0及以上版本的智能手机和平板电脑。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo" style="color:white;">
+                        每日瑜伽<span>App</span>
+                    </div>
+                    <p>致力于通过科技手段让更多人轻松享受瑜伽带来的身心平衡。科学、专业、便捷，是您的私人瑜伽教练。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>产品</h4>
+                    <ul>
+                        <li><a href="#">功能介绍</a></li>
+                        <li><a href="#">会员价格</a></li>
+                        <li><a href="#">更新日志</a></li>
+                        <li><a href="#">下载App</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>课程</h4>
+                    <ul>
+                        <li><a href="#">晨间唤醒</a></li>
+                        <li><a href="#">减肥塑形</a></li>
+                        <li><a href="#">产后修复</a></li>
+                        <li><a href="#">冥想放松</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>支持</h4>
+                    <ul>
+                        <li><a href="#">帮助中心</a></li>
+                        <li><a href="#">联系客服</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                        <li><a href="#">用户协议</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 每日瑜伽App 版权所有 | 京ICP备12345678号</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple FAQ Accordion Logic
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    // Close other items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    // Toggle current item
+                    item.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
